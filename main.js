@@ -20,18 +20,23 @@ const output = document.querySelector('.output');
 let operatorBtnClicked = false;
 let equalBtnClicked = false;
 
+// Operator type
+let operator;
+
 // Display the num on the output div
 function displayNum(e) {
     const outputValue = parseInt(output.innerHTML);
     if (outputValue === 0) {
         output.innerHTML = e.target.innerHTML;
-    } else if (operatorBtnClicked === true || equalBtnClicked === true) {
+    } else {
+        output.innerHTML += e.target.innerHTML;
+    }
+
+    if (operatorBtnClicked === true || equalBtnClicked === true) {
         reset();
         operatorBtnClicked = false;
         equalBtnClicked = false;
         displayNum(e);
-    } else {
-        output.innerHTML += e.target.innerHTML;
     }
 }
 
@@ -47,17 +52,19 @@ operationsBtn.forEach(btn => {
 // Outputs --> keep track of the inputs 
 let result = 0;
 
-// Operator type
-let operator;
-
 // Operate function 
 function operate(e) {
     let outputValue = parseInt(output.innerHTML);
     operatorBtnClicked = true;
 
-    operator = e.target.id;
+    if (e.target.id) {
+        operator = e.target.id;
+    } else {
+        operator = e.target.parentElement.id;
+    }
+    console.log(operator)
     
-    if (operator === "plus") {
+    if (operator == "plus") {
         result += outputValue;
         console.log(result)
     }
@@ -77,7 +84,7 @@ function displayResult() {
         answer = (result + parseInt(output.innerHTML));
         console.log(answer);
     }
-
+    
     output.innerHTML = answer;
     result = 0;
 }
@@ -91,7 +98,6 @@ resetBtn.addEventListener('click', reset);
 // Reset function
 function reset() {
     output.innerHTML = 0;
-    result = 0;
 }
 
 
