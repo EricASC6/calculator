@@ -10,7 +10,6 @@ numbersBtn = [...numbersBtn].sort((a, b) => {
 // Add an event listener to each num button
 numbersBtn.forEach(btn => {
   btn.addEventListener("click", displayNum);
-  btn.addEventListener("click", performOperation);
 });
 
 // Get the div with the class of output
@@ -43,15 +42,6 @@ function displayNum(e) {
   }
 }
 
-// performOperation function
-function performOperation(e) {
-  if (operator === "plus") {
-    result += parseInt(e.target.innerHTML);
-  } else if (operator === "minus") {
-    result -= parseInt(e.target.innerHTML);
-  }
-}
-
 // Get all the buttons with the class of operations
 let operationsBtn = document.querySelectorAll(".operations");
 operationsBtn = Array.from(operationsBtn);
@@ -60,6 +50,9 @@ operationsBtn = Array.from(operationsBtn);
 operationsBtn.forEach(btn => {
   btn.addEventListener("click", operate);
 });
+
+// Previous operator
+let preOperator;
 
 // Operate function
 function operate(e) {
@@ -72,16 +65,27 @@ function operate(e) {
   } else {
     operator = e.target.parentElement.id;
   }
-  console.log(operator);
+  console.log(preOperator);
 
   if (result === null) {
     result = outputValue;
-  }
-
-  if (operator === "plus") {
+    preOperator = operator;
     console.log(result);
-  } else if (operator === "minus") {
+  } else if (preOperator === "plus") {
+    result += outputValue;
+    output.innerHTML = result;
     console.log(result);
+    preOperator = operator;
+  } else if (preOperator === "minus") {
+    result -= outputValue;
+    output.innerHTML = result;
+    console.log(result);
+    preOperator = operator;
+  } else if (preOperator === "multiply") {
+    result *= outputValue;
+    output.innerHTML = result;
+    console.log(result);
+    preOperator = operator;
   }
 }
 
@@ -95,7 +99,23 @@ equalBtn.addEventListener("click", displayResult);
 function displayResult() {
   equalBtnClicked = true;
 
-  output.innerHTML = result;
+  let answer;
+  if (operator === "plus") {
+    answer = result + parseInt(output.innerHTML);
+    console.log(answer);
+  } else if (operator === "minus") {
+    answer = result - parseInt(output.innerHTML);
+    console.log(answer);
+  } else if (operator === "multiply") {
+    answer = result * parseInt(output.innerHTML);
+    console.log(answer);
+  } else if (operator === "divide") {
+    answer = result / parseInt(output.innerHTML);
+    console.log(answer);
+  }
+
+  output.innerHTML = answer;
+
   result = null;
   operator = null;
 }
