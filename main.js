@@ -15,6 +15,19 @@ numbersBtn.forEach(btn => {
 // Get the div with the class of output
 const output = document.querySelector(".output");
 
+// Negative button
+const negativeBtn = document.querySelector("#negative");
+
+// Add event listener to the negative button
+negativeBtn.addEventListener("click", addNegative);
+
+// Add negative function
+function addNegative() {
+  if (output.innerHTML.includes("-") === false) {
+    output.innerHTML = "-" + output.innerHTML;
+  }
+}
+
 // Boolean to tell us if any of the operator buttons or equal button are clicked
 let operatorBtnClicked = false;
 let equalBtnClicked = false;
@@ -27,8 +40,8 @@ let result = null;
 
 // Display the num on the output div
 function displayNum(e) {
-  const outputValue = parseInt(output.innerHTML);
-  if (outputValue === 0) {
+  let outputValue = output.innerHTML;
+  if (outputValue === "0") {
     output.innerHTML = e.target.innerHTML;
   } else {
     output.innerHTML += e.target.innerHTML;
