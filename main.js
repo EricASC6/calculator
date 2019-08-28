@@ -218,3 +218,5 @@ function addDecimal() {
     output.innerHTML += ".";
   }
 }
+
+// Need to Refactor
