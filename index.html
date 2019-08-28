@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://kit.fontawesome.com/bc308bbd0b.js"></script>
     <script src="main.js" defer></script>
     <title>Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="calculator">
-        <div class="output">0</div>
+      <div class="output">0</div>
+
+      <div class="buttons">
+        <div class="row">
+          <button class="btn gray" id="reset">AC</button>
+          <button class="btn gray" id="negative">+/-</button>
+          <button class="btn gray" id="percent">
+            %
+          </button>
+          <button class="btn operations" id="divide">
+            ÷
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn num" id="7">7</button>
+          <button class="btn num" id="8">8</button>
+          <button class="btn num" id="9">9</button>
+          <button class="btn operations" id="multiply">
+            x
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn num" id="4">4</button>
+          <button class="btn num" id="5">5</button>
+          <button class="btn num" id="6">6</button>
+          <button class="btn operations" id="minus">
+            -
+          </button>
+        </div>
+
+        <div class="row">
+          <button class="btn num" id="1">1</button>
+          <button class="btn num" id="2">2</button>
+          <button class="btn num" id="3">3</button>
+          <button class="btn operations" id="plus">
+            +
+          </button>
+        </div>
+
+        <div class="row" id="row-4">
+          <button class="btn num" id="zero">0</button>
+          <button class="btn" id="decimal">.</button>
+          <button class="btn" id="equal">=</button>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-        <div class="row">
-            <button class="btn" id="reset">AC</button>
-            <button class="btn" id="negative">+/-</button>
-            <button class="btn" id="percent"><i class="fas fa-percent"></i></button>
-            <button class="btn operations" id="divide"><i class="fas fa-divide"></i></button>
-        </div>
-
-        <div class="row">
-            <button class="btn num" id="7">7</button>
-            <button class="btn num" id="8">8</button>
-            <button class="btn num" id="9">9</button>
-            <button class="btn operations" id="multiply">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <div class="row">
-            <button class="btn num" id="4">4</button>
-            <button class="btn num" id="5">5</button>
-            <button class="btn num" id="6">6</button>
-            <button class="btn operations" id="minus"><i class="fas fa-minus"></i></button>
-        </div>
-
-        <div class="row">
-            <button class="btn num" id="1">1</button>
-            <button class="btn num" id="2">2</button>
-            <button class="btn num" id="3">3</button>
-            <button class="btn operations" id="plus"><i class="fas fa-plus"></i></button>
-        </div>
-
-        <div class="row">
-            <button class="btn num" id="0">0</button>
-            <button class="btn" id="decimal">.</button>
-            <button class="btn" id="equal"><i class="fas fa-equals"></i></button>
-        </div>
-    </div>
-</body>
+  </body>
 </html>

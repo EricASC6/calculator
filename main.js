@@ -184,6 +184,9 @@ resetBtn.addEventListener("click", acOrC);
 // Reset function
 function reset() {
   output.innerHTML = 0;
+  result = null;
+  operator = null;
+  preOperator = null;
 }
 
 // acOrC function
