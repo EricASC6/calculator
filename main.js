@@ -38,8 +38,13 @@ let operator;
 // Outputs --> keep track of the inputs
 let result = null;
 
+// num btn pressed flag
+let numBtnPressed = false;
+
 // Display the num on the output div
 function displayNum(e) {
+  numBtnPressed = true;
+
   let outputValue = output.innerHTML;
   if (outputValue === "0") {
     output.innerHTML = e.target.innerHTML;
@@ -69,7 +74,10 @@ let preOperator;
 
 // Operate function
 function operate(e) {
-  let outputValue = parseInt(output.innerHTML);
+  let outputValue = !output.innerHTML.includes(".")
+    ? parseInt(output.innerHTML)
+    : parseFloat(output.innerHTML);
+
   operatorBtnClicked = true;
 
   // Get the operator type
@@ -78,28 +86,35 @@ function operate(e) {
   } else {
     operator = e.target.parentElement.id;
   }
+  console.log(operator);
   console.log(preOperator);
 
-  if (result === null) {
-    result = outputValue;
+  if (numBtnPressed === false) {
     preOperator = operator;
-    console.log(result);
-  } else if (preOperator === "plus") {
-    result += outputValue;
-    output.innerHTML = result;
-    console.log(result);
-    preOperator = operator;
-  } else if (preOperator === "minus") {
-    result -= outputValue;
-    output.innerHTML = result;
-    console.log(result);
-    preOperator = operator;
-  } else if (preOperator === "multiply") {
-    result *= outputValue;
-    output.innerHTML = result;
-    console.log(result);
-    preOperator = operator;
+  } else {
+    if (result === null) {
+      result = outputValue;
+      preOperator = operator;
+      console.log(result);
+    } else if (preOperator === "plus") {
+      result += outputValue;
+      output.innerHTML = result;
+      console.log(result);
+      preOperator = operator;
+    } else if (preOperator === "minus") {
+      result -= outputValue;
+      output.innerHTML = result;
+      console.log(result);
+      preOperator = operator;
+    } else if (preOperator === "multiply") {
+      result *= outputValue;
+      output.innerHTML = result;
+      console.log(result);
+      preOperator = operator;
+    }
   }
+
+  numBtnPressed = false;
 }
 
 // Get the equal button
@@ -152,6 +167,7 @@ percentBtn.addEventListener("click", convertToPercent);
 
 // convertToPercent function
 function convertToPercent() {
-  output.innerHTML = parseInt(output.innerHTML) / 100;
-  result = output.innerHTML;
+  output.innerHTML = !output.innerHTML.includes(".")
+    ? parseInt(output.innerHTML) / 100
+    : parseFloat(output.innerHTML) / 100;
 }
