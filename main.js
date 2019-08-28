@@ -88,8 +88,8 @@ function operate(e) {
   } else {
     operator = e.target.parentElement.id;
   }
-  console.log(operator);
-  console.log(preOperator);
+  console.log(`Current Operator: ${operator}`);
+  console.log(`Previous Operator: ${preOperator}`);
 
   if (numBtnPressed === false) {
     preOperator = operator;
@@ -113,6 +113,16 @@ function operate(e) {
       output.innerHTML = result;
       console.log(result);
       preOperator = operator;
+    } else if (preOperator === "divide") {
+      if (outputValue === 0) {
+        output.innerHTML = "Error";
+        result = "Error";
+      } else {
+        result /= outputValue;
+        output.innerHTML = result;
+        console.log(result);
+        preOperator = operator;
+      }
     }
   }
 
@@ -134,26 +144,30 @@ function displayResult() {
     : parseInt(output.innerHTML);
 
   let answer;
+
   if (operator === "plus") {
     answer = result + outputValue;
     console.log(answer);
   } else if (operator === "minus") {
     answer = result - outputValue;
-    console.log(answer);
+    console.log(`Answer: ${answer}`);
   } else if (operator === "multiply") {
     answer = result * outputValue;
     console.log(answer);
   } else if (operator === "divide") {
-    answer = result / outputValue;
+    answer = outputValue === 0 ? "Error" : result / outputValue;
     console.log(answer);
   }
 
-  if (answer) {
+  if (answer || answer === 0) {
     output.innerHTML = answer;
+  } else if (isNaN(answer)) {
+    output.innerHTML = "Error";
   }
 
   result = null;
   operator = null;
+  preOperator = null;
 }
 
 // Get the AC button
