@@ -127,18 +127,22 @@ equalBtn.addEventListener("click", displayResult);
 function displayResult() {
   equalBtnClicked = true;
 
+  let outputValue = output.innerHTML.includes(".")
+    ? parseFloat(output.innerHTML)
+    : parseInt(output.innerHTML);
+
   let answer;
   if (operator === "plus") {
-    answer = result + parseInt(output.innerHTML);
+    answer = result + outputValue;
     console.log(answer);
   } else if (operator === "minus") {
-    answer = result - parseInt(output.innerHTML);
+    answer = result - outputValue;
     console.log(answer);
   } else if (operator === "multiply") {
-    answer = result * parseInt(output.innerHTML);
+    answer = result * outputValue;
     console.log(answer);
   } else if (operator === "divide") {
-    answer = result / parseInt(output.innerHTML);
+    answer = result / outputValue;
     console.log(answer);
   }
 
@@ -170,4 +174,17 @@ function convertToPercent() {
   output.innerHTML = !output.innerHTML.includes(".")
     ? parseInt(output.innerHTML) / 100
     : parseFloat(output.innerHTML) / 100;
+}
+
+// Get decimal button
+const decimalBtn = document.querySelector("#decimal");
+
+// Add Event listener to the decimal button
+decimalBtn.addEventListener("click", addDecimal);
+
+// addDecimal function
+function addDecimal() {
+  if (!output.innerHTML.includes(".")) {
+    output.innerHTML += ".";
+  }
 }
