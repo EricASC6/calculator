@@ -53,7 +53,7 @@ function displayNum(e) {
   }
 
   if (operatorBtnClicked === true || equalBtnClicked === true) {
-    reset();
+    output.innerHTML = 0;
     operatorBtnClicked = false;
     equalBtnClicked = false;
     displayNum(e);
@@ -148,7 +148,9 @@ function displayResult() {
     console.log(answer);
   }
 
-  output.innerHTML = answer;
+  if (answer) {
+    output.innerHTML = answer;
+  }
 
   result = null;
   operator = null;
