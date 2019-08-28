@@ -104,6 +104,9 @@ body {
   transition-property: background-color, color;
   transition-duration: 0.3s, 0.7s;
   transition-timing-function: linear;
+  -webkit-transition-property: background-color, color;
+  -webkit-transition-duration: 0.3s, 0.7s;
+  -webkit-transition-timing-function: linear;
 }
 
 .operations:focus {
