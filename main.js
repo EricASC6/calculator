@@ -126,6 +126,10 @@ function operate(e) {
     }
   }
 
+  if (isNaN(result)) {
+    output.innerHTML = "Error";
+  }
+
   numBtnPressed = false;
 }
 
