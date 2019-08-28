@@ -58,6 +58,8 @@ function displayNum(e) {
     equalBtnClicked = false;
     displayNum(e);
   }
+
+  resetBtn.innerHTML = "C";
 }
 
 // Get all the buttons with the class of operations
@@ -157,10 +159,18 @@ const resetBtn = document.querySelector("#reset");
 
 // Add eventlistener to the reset button
 resetBtn.addEventListener("click", reset);
+resetBtn.addEventListener("click", acOrC);
 
 // Reset function
 function reset() {
   output.innerHTML = 0;
+}
+
+// acOrC function
+function acOrC() {
+  if (resetBtn.innerHTML === "C") {
+    resetBtn.innerHTML = "AC";
+  }
 }
 
 // Get the percent button
