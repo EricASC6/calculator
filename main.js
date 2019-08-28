@@ -143,3 +143,15 @@ resetBtn.addEventListener("click", reset);
 function reset() {
   output.innerHTML = 0;
 }
+
+// Get the percent button
+const percentBtn = document.querySelector("#percent");
+
+// Add event listener to the percent button
+percentBtn.addEventListener("click", convertToPercent);
+
+// convertToPercent function
+function convertToPercent() {
+  output.innerHTML = parseInt(output.innerHTML) / 100;
+  result = output.innerHTML;
+}
